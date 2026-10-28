@@ -25,7 +25,7 @@ the tag gives these numbers.
 ## The kb page
 
 This repo is the desk's kb export with one page added:
-[`src/routes/kb/incidents/4471-two-causes/+page.svx`](src/routes/kb/incidents/4471-two-causes/+page.svx).
+[`support-kb/src/routes/kb/incidents/4471-two-causes/+page.svx`](support-kb/src/routes/kb/incidents/4471-two-causes/+page.svx).
 
 - [`page.svx`](page.svx) — the same page, under a plain file name
 - [`page.html`](page.html) — the page as the desk will see it, prerendered with the desk's own
@@ -41,6 +41,6 @@ The export ships only `src/`; the config here is the frame it was cut out of. To
 yourself:
 
 ```sh
-npm install && npm run build
-node flatten.mjs build/kb/incidents/4471-two-causes.html page.html
+cd support-kb && npm install && npm run build
+node flatten.mjs build/kb/incidents/4471-two-causes.html ../page.html
 ```

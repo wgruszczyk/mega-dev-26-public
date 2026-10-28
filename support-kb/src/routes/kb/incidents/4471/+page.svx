@@ -1,36 +1,76 @@
 ---
 layout: runbook
-title: '#4471 · dates parse mm/dd in eu locales'
-owner: support desk
-status: known
-reviewed: 2026-09-30
+title: '#4471 · two causes, not one'
+owner: Wojciech Gruszczyk
+status: closed
+reviewed: 2026-10-28
+signature: Wojciech Gruszczyk
 ---
 
 <script>
   import CauseTable from '#lib/kb/CauseTable.svelte';
-  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
   import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-Since April, people have told us their bookings land on the wrong day: a month flipped. By
-4 October the desk had **412 reports**.
-
-**Merged as one issue.** The parser reads dates month first, and our tenants write the day
-first. The fix is queued.
-
-<Callout>
-Known. One issue, one fix queued.
-</Callout>
-
-## What was merged
+#4471 was filed as one bug with one fix queued, and closed on 5 October. The table below is
+built from the reports at render time, and it had been showing two causes since April. The
+paragraph that used to stand above it was written once and never re-read.
 
 <CauseTable ticket={4471} />
 
-## Since April
+<Callout kind="warn">
+The row the table marks <code>not this ticket — no ticket of its own</code> is a second bug.
+The fix shipped on #4471 did not reach it.
+</Callout>
 
-<QueueTimeline ticket={4471} />
+## The two
 
-## Lessons
+**`parser`.** Every tenant on file writes the day before the month. The shared parser reads
+every date month first, so the two swap. This happens on every channel, for every tenant, and
+it is what #4471 describes.
 
-- A big ticket is mostly one bug reported many times. Merge early, count once.
-- Write the page while the queue is still in your head.
+**`hint`.** The `booking-v3` form prints `MM/DD/YYYY` under its date field. People type what
+the hint tells them, month first, and the form then reads it the tenant's way, day first. The
+date swaps again. This one needed the hint changed, not the parser, so it only reached reports
+that came in through `form`, from tenants on `booking-v3`.
+
+## What engineering did
+
+#4471 closed on 5 October with `fix(dates): parse dd/mm for eu locales`. That is the `parser`
+cause, and it is fixed.
+
+The `hint` cause closed as won't fix: `booking-v3` is retired. The cause leaves with the form,
+not with a fix, and the parser change never touched it. Anyone reading only #4471 would take
+"one issue, one fix" at face value and conclude the parser fix covered all of it. It covered
+the larger group. The smaller one was ended a different way, and nothing in #4471 says so.
+
+## Why they landed together
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject line alone, so
+nobody reads the body. A wrong day looks the same from either bug, so both wrote the same
+subjects and both merged into the first ticket open. The rule did what it says; the subject
+line is just not the thing that separates these two.
+
+The [triage page](/kb/triage/dedupe) that carries the rule is past the desk's own staleness
+mark, and it is the page new people on the desk are told to start with.
+
+## Two things that move the counts
+
+**Intake tags are a guess.** `meta.intakeTag` is read off the reporter's browser the moment
+the report arrives. The cause depends on the tenant: the locale they write dates in and the
+form they run. The `tagged as` column above shows how often the two disagree, and it disagrees
+in both directions. A count taken from the tag lands in the wrong place for every one of them.
+
+**The export repeats itself.** The ticket system exports in pages that overlap, so a report
+can appear twice under one id. The row count of the export file is higher than the number of
+reports. `uniqueById` in `causes.ts` is what makes the two agree.
+
+## Tickets
+
+- `parser` → [wgruszczyk/mega-dev-26-public#1](https://github.com/wgruszczyk/mega-dev-26-public/issues/1), closed as fixed
+- `hint` → [wgruszczyk/mega-dev-26-public#2](https://github.com/wgruszczyk/mega-dev-26-public/issues/2), closed as won't fix
+
+Each carries the count the table computes for it, not a number typed by hand.
+
+<RenderStamp {signature} />

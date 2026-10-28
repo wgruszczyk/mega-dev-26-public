@@ -24,15 +24,15 @@ the tag gives these numbers.
 
 ## The kb page
 
-My page is added to the kb, at its own path inside it:
-
-- [`kb/src/routes/kb/incidents/4471-two-causes/+page.svx`](kb/src/routes/kb/incidents/4471-two-causes/+page.svx) — the page
+- [`page.svx`](page.svx) — the page
 - [`page.html`](page.html) — the page as the desk will see it, prerendered with the desk's own
   components and stylesheets inlined
 
 The page is signed, so it carries a desk ref: `DR-KS04-G0PE`.
 
-`kb/` is the desk's export with that one page added, plus the frame the export was cut out of
+The same page is added to the kb at its own path inside it,
+[`kb/src/routes/kb/incidents/4471-two-causes/+page.svx`](kb/src/routes/kb/incidents/4471-two-causes/+page.svx).
+`kb/` is the desk's export with that page added, plus the frame the export was cut out of
 (the export ships only `src/`). To see the page yourself:
 
 ```sh

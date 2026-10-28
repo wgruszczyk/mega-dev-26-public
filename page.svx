@@ -4,7 +4,7 @@ title: '#4471 · two causes, not one'
 owner: Wojciech Gruszczyk
 status: closed
 reviewed: 2026-10-28
-signature: Wojciech Gruszczyk
+signature: 'v1.eyJzdWIiOiIxNTQzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxNzk0NDUsImV4cCI6MTc5MzI2NTg0NX0.mcFraJBg9OXuKyTC8hRSKHjAD-5WuCfyzAYJ9VOWr_A'
 ---
 
 <script>

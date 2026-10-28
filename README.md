@@ -30,6 +30,9 @@ This repo is the desk's kb export with one page added:
 - [`page.svx`](page.svx) — the same page, under a plain file name
 - [`page.html`](page.html) — the page as the desk will see it, prerendered with the desk's own
   components and stylesheets inlined
+- [`page.png`](page.png) — the same rendering, as a picture
+
+![the page as the desk will see it](page.png)
 
 The page is signed, so it carries a desk ref: `DR-KS04-G0PE`.
 

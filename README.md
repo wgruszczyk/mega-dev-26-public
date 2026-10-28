@@ -24,18 +24,19 @@ the tag gives these numbers.
 
 ## The kb page
 
-- [`page.svx`](page.svx) — the page
+This repo is the desk's kb export with one page added:
+[`src/routes/kb/incidents/4471-two-causes/+page.svx`](src/routes/kb/incidents/4471-two-causes/+page.svx).
+
+- [`page.svx`](page.svx) — the same page, under a plain file name
 - [`page.html`](page.html) — the page as the desk will see it, prerendered with the desk's own
   components and stylesheets inlined
 
 The page is signed, so it carries a desk ref: `DR-KS04-G0PE`.
 
-The same page is added to the kb at its own path inside it,
-[`kb/src/routes/kb/incidents/4471-two-causes/+page.svx`](kb/src/routes/kb/incidents/4471-two-causes/+page.svx).
-`kb/` is the desk's export with that page added, plus the frame the export was cut out of
-(the export ships only `src/`). To see the page yourself:
+The export ships only `src/`; the config here is the frame it was cut out of. To see the page
+yourself:
 
 ```sh
-cd kb && npm install && npm run build
-node flatten.mjs build/kb/incidents/4471-two-causes.html ../page.html
+npm install && npm run build
+node flatten.mjs build/kb/incidents/4471-two-causes.html page.html
 ```

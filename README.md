@@ -29,7 +29,8 @@ This repo is the desk's kb export with one page added:
 
 - [`page.svx`](page.svx) — the same page, under a plain file name
 - [`page.html`](page.html) — the page as the desk will see it, prerendered with the desk's own
-  components and stylesheets inlined
+  components and stylesheets inlined, and served at
+  <https://wgruszczyk.github.io/mega-dev-26-public/>
 - [`page.png`](page.png) — the same rendering, as a picture
 
 ![the page as the desk will see it](page.png)

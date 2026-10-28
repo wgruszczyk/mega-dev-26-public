@@ -35,7 +35,7 @@ This repo is the desk's kb export with one page added:
 
 ![the page as the desk will see it](page.png)
 
-The page is signed, so it carries a desk ref: `DR-KS04-G0PE`.
+The page is signed, so it carries a desk ref: `DR-XN4E-4JBN`.
 
 The export ships only `src/`; the config here is the frame it was cut out of. To see the page
 yourself:

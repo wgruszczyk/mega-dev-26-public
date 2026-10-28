@@ -1,10 +1,10 @@
 ---
 layout: runbook
 title: '#4471 · two causes, not one'
-owner: wgruszczyk
+owner: Wojciech Gruszczyk
 status: closed
 reviewed: 2026-10-28
-signature: wgruszczyk
+signature: Wojciech Gruszczyk
 ---
 
 <script>

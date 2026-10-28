@@ -24,8 +24,18 @@ the tag gives these numbers.
 
 ## The kb page
 
-- [`+page.svx`](kb/incidents/4471-two-causes/+page.svx) — the source, as it goes into the kb
-- [`page.html`](kb/incidents/4471-two-causes/page.html) — the page as the desk will see it,
-  prerendered with the desk's own components and stylesheets inlined
+My page is added to the kb, at its own path inside it:
+
+- [`kb/src/routes/kb/incidents/4471-two-causes/+page.svx`](kb/src/routes/kb/incidents/4471-two-causes/+page.svx) — the page
+- [`page.html`](page.html) — the page as the desk will see it, prerendered with the desk's own
+  components and stylesheets inlined
 
 The page is signed, so it carries a desk ref: `DR-KS04-G0PE`.
+
+`kb/` is the desk's export with that one page added, plus the frame the export was cut out of
+(the export ships only `src/`). To see the page yourself:
+
+```sh
+cd kb && npm install && npm run build
+node flatten.mjs build/kb/incidents/4471-two-causes.html ../page.html
+```

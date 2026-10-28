@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two causes, not one'
 owner: wgruszczyk
-status: proposed
+status: closed
 reviewed: 2026-10-28
 signature: wgruszczyk
 ---
@@ -13,15 +13,15 @@ signature: wgruszczyk
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-#4471 is filed as one bug with one fix queued. The table on that page is built from the
-reports at render time, and it has been showing two causes since April. The prose above it
-was written once and never re-read.
+#4471 was filed as one bug with one fix queued, and closed on 5 October. The table on that
+page is built from the reports at render time, and it had been showing two causes since April.
+The prose above it was written once and never re-read.
 
 <CauseTable ticket={4471} />
 
 <Callout kind="warn">
 The row the table marks <code>not this ticket — no ticket of its own</code> is a second bug.
-The fix queued on #4471 does not reach it.
+The fix shipped on #4471 did not reach it.
 </Callout>
 
 ## The two
@@ -32,9 +32,18 @@ it is what #4471 describes.
 
 **`hint`.** The `booking-v3` form prints `MM/DD/YYYY` under its date field. People type what
 the hint tells them, month first, and the form then reads it the tenant's way, day first. The
-date swaps again. This one needs the hint changed, not the parser, so it only reaches reports
-that came in through `form`, from tenants on `booking-v3`. Ship the parser fix alone and these
-reports keep arriving.
+date swaps again. This one needed the hint changed, not the parser, so it only reached reports
+that came in through `form`, from tenants on `booking-v3`.
+
+## What engineering did
+
+#4471 closed on 5 October with `fix(dates): parse dd/mm for eu locales`. That is the `parser`
+cause, and it is fixed.
+
+The `hint` cause closed as won't fix: `booking-v3` is retired. The cause leaves with the form,
+not with a fix, and the parser change never touched it. Anyone reading only #4471 would take
+"one issue, one fix" at face value and conclude the parser fix covered all of it. It covered
+the larger group. The smaller one was ended a different way, and nothing in #4471 says so.
 
 ## Why they landed together
 
@@ -59,8 +68,8 @@ reports. `uniqueById` in `causes.ts` is what makes the two agree.
 
 ## Tickets
 
-- `parser` → [wgruszczyk/mega-dev-26-public#1](https://github.com/wgruszczyk/mega-dev-26-public/issues/1)
-- `hint` → [wgruszczyk/mega-dev-26-public#2](https://github.com/wgruszczyk/mega-dev-26-public/issues/2)
+- `parser` → [wgruszczyk/mega-dev-26-public#1](https://github.com/wgruszczyk/mega-dev-26-public/issues/1), closed as fixed
+- `hint` → [wgruszczyk/mega-dev-26-public#2](https://github.com/wgruszczyk/mega-dev-26-public/issues/2), closed as won't fix
 
 Each carries the count the table computes for it, not a number typed by hand.
 

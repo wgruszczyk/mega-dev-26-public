@@ -13,9 +13,10 @@ signature: Wojciech Gruszczyk
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-#4471 was filed as one bug with one fix queued, and closed on 5 October. The table below is
-built from the reports at render time, and it had been showing two causes since April. The
-paragraph that used to stand above it was written once and never re-read.
+#4471 was filed as one bug with one fix queued, and closed on 5 October. The cause table on
+[its page](/kb/incidents/4471) is built from the reports at render time, and it had been
+showing two causes since April. The paragraph above it was written once and never re-read.
+The same table, below, is what it shows.
 
 <CauseTable ticket={4471} />
 
